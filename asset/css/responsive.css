@@ -1,0 +1,17 @@
+/* <!-- 
+pc: >=1024px
+tablet: 740<= width<1024
+mobile: <740
+ --> */
+@media(min-width: 1024px) {
+
+}
+
+
+@media(min-width: 740px) and (max-width: 1023px) {
+
+}
+
+@media(max-width: 739px) {
+
+}

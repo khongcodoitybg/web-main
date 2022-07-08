@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UET-forum</title>
+    <link rel="icon" type="image/x-icon" href="./asset/img/anime.jpg">
+    <link rel="stylesheet" href="./asset/font/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="./asset/css/responsive.css">
+    <script src="https://kit.fontawesome.com/7c9d8f3e2f.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="main">
+
+
+        <!-- Slogent -->
+        <div id="slider" class="col-ful">
+            <a href="" class="logo">
+                <img src="./asset/img/BKA.png" alt="">
+            </a>
+            <p class="slider__slogent">Nothing Is Imposible</p>
+        </div>
+        <!-- End Slogent -->
+
+        <!-- Header -->
+        <div id="header">
+            <!-- begin nav -->
+            <ul id="header__nav">
+                <li><a href="">Trang chủ</a></li>
+                
+                <li>
+                    <a href="#News">
+                        Bài mới
+                        <i class="nav__arrow-down ti-angle-down"></i>
+                    </a>
+                    <ul class="header__nav__subnav">
+                        <li><a href="#">Mechandise</a></li>
+                        <li><a href="#">Extras</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#Group">
+                        Hội nhóm
+                        <i class="nav-arrow-down ti-angle-down"></i>
+                    </a>
+                    <ul class="header__nav__subnav">
+                        <li><a href="#">Mechandise</a></li>
+                        <li><a href="#">Extras</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Tiện ích
+                        <i class="nav-arrow-down ti-angle-down"></i>
+                    </a>
+                    <ul class="header__nav__subnav">
+                        <li><a href="#">Mechandise</a></li>
+                        <li><a href="#">Extras</a></li>
+                        <li><a href="#">Media</a></li>
+                    </ul>
+                </li>
+
+                
+            </ul>
+            <!-- end nav -->                                     
+            
+            <!-- begin login-block -->
+            <div class="header__log-block">
+                <button class="js-log-Btn js-signin-Btn" onclick="showSignin()">Sign In</button>
+                <button class="js-log-Btn js-signup-Btn" onclick="showSignup()">Sign Up</button> 
+                <div class="search-btn js-search">
+                    <input id="search" type="text" name="search" class="search-input" placeholder="Tìm kiếm">
+                    <div class="search-icon-block" onclick="clearSearch()">
+                        <i class="search-icon ti-search"></i> 
+                    </div>
+                </div>
+            </div>           
+            <!-- end login-block -->
+        </div>
+        <!--End Header  -->
+
+
+        <!-- Begin Content -->
+        <div id="content">
+
+            <!-- Begin Home -->
+            <div id="Home" class="Home">
+                <div class="main-content">
+                    <!-- Begin Bản tin -->
+                    <div class="News">
+                        <label for="">Bản tin</label>
+                        <div class="News__body">
+                            <ul class="News-list">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div id="Forum" class="content-section">
+                        <h2 class="section-heading">BẢN TIN</h2>
+                        
+                        <p class="about-text">nguyen van quang anad fdsdafsdfasdhdfashfkj hadf asd fadsd fdasdf asfa sdfasd fas dfas fasdf asd fasd fas dfasd fagafgfgefg adsgfaafasfasdf asdfadsf asdfas dfsa df asdf sadf sag fg fg asf gasd fasd fasdf asdf sad fasdf asd fasd gasdg sadf asdf sa  ow dau do ...oke la</p>
+                        <div class="member-list">
+                            <div class="member-item">
+                                <p class="member-name">Name</p>
+                                <img src="./asset/img/anime.jpg" alt="Name" class = "member-img">
+                            </div>
+                            <div class="member-item">
+                                <p class="member-name">Name</p>
+                                <img src="./asset/img/anime.jpg" alt="Name" class = "member-img">
+                            </div>
+                            <div class="member-item">
+                                <p class="member-name">Name</p>
+                                <img src="./asset/img/anime.jpg" alt="Name" class = "member-img">
+                            </div>
+                            <div class="clear"></div>
+                        </div>              
+                    </div> -->
+                    <!-- End Bản tin -->
+                </div>
+
+                <!--  -->
+                <div class="additional-content">
+                    <div class="bc-white unread-post">
+                        Bài chưa xem
+                    </div>
+
+                    <div class="bc-white statistic">
+                        Thống kê diễn đàn
+                    </div>
+                </div>
+            </div>
+            <!-- End Home -->
+
+
+
+
+
+
+
+            <!-- Begin Article -->
+            <div id="Article" class="Article">
+                <div class="Article__heading">
+                    <label for="" class="Article__heading__title">tieu de</label>
+                    <time class="Article__heading__time-post">1:56 ngay 97/07/2022</time>
+                </div>
+
+                <div class="Article__body col">
+                    <div class="Article__body--main">
+                        <div class="Article__body--main__word">
+
+                        </div>
+                        <div class="Article__body--main__author">
+                            <img src="./asset/img/anime.jpg" alt="Name" class = "member-img">
+                            <p class="member-name">Name</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="Article__body--comment">
+
+                    </div>
+                </div>
+            </div>
+            <!-- End Article -->
+
+
+
+
+
+            <!-- Begin Group -->
+            <div class="Group"></div>
+            <!-- End Group -->
+
+            <!-- Begin advantage -->
+            <div class="Advantages"></div>
+            <!-- End advantage -->
+        </div>
+        <!-- End content -->
+
+
+
+
+        <div id="footer">
+            
+        </div>
+    </div>
+
+    <!-- Begin Modal Sign up -->
+    <div class="modal" onclick="hidenSignup()">
+        <div class="modal-container">
+            <div class="modal-close" onclick="hidenSignup()">
+                <i class="ti-close"></i>
+            </div>
+            <header class="modal-header">
+                <i class="ti-bag" padding-right: 16px;></i>
+                Đăng ký
+            </header>
+
+            <div class="modal-body">
+                <label for="email-signup" class="modal-label">
+                    <i class="fa-solid fa-user"></i>
+                    Email
+                </label>
+                <input id="email-signup" type="text" class="modal-input" placeholder="Email">
+                <p class="email-signup-err err"></p>
+
+                <label for="pass-signup" class="modal-label">
+                    <i class="fa-solid fa-lock"></i>
+                    Password
+                </label>
+                <input id="pass-signup" type="text" class="modal-input" placeholder="Tài khoản">
+                <p class="pass-signup-err err"></p>
+
+                <label for="re-pass-signup" class="modal-label">
+                    <i class="fa-solid fa-lock"></i>
+                    Enter the password
+                </label>
+                <input id="re-pass-signup" type="text" class="modal-input" placeholder="Mật khẩu">
+                <p class="repass-signup-err err"></p>
+                
+
+                <button id="signup-button" class="log-btn">
+                    Đăng ký
+                    <i class="ti-check"></i>
+                </button>
+            </div>
+
+            <footer class="modal-footer">
+                <p class="modal-help">Need <a href="#">help?</a></p>
+            </footer>
+        </div>
+    </div>
+    <!-- end Modal Sign up -->
+
+
+    <!-- Begin Modal Sign in -->
+    <div class="modal-Signin" onclick="hidenSignin()">
+        <div class="modal-container">
+            <div class="modal-close modal-close1" onclick="hidenSignin()">
+                <i class="ti-close"></i>
+            </div>
+            <header class="modal-header">
+                <i class="ti-bag" padding-right: 16px;></i>
+                Đăng nhập
+            </header>
+
+            <div class="modal-body">
+                <label for="email-login" class="modal-label">
+                    <i class="fa-solid fa-user"></i>
+                    Tài khoản
+                </label>
+                <input id="email-login" type="text" class="modal-input" placeholder="Tài khoản hoặc Email">
+                <p class="email-err err"></p>
+
+                <label for="pass-login" class="modal-label">
+                    <i class="fa-solid fa-lock"></i>
+                    Mật khẩu
+                </label>
+                <input id="pass-login" type="text" class="modal-input" placeholder="Password">
+                <p class="pass-err err"></p>
+
+                <button id="signin-button" class="log-btn">
+                    Đăng Nhập
+                    <i class="ti-check"></i>
+                </button>
+            </div>
+
+            <footer class="modal-footer">
+                <p class="modal-help">Need <a href="#">help?</a></p>
+            </footer>
+        </div>
+    </div>
+    <!-- end Modal Sign in -->
+
+    <script src="./asset/main.js"></script>
+</body>
+</html>
