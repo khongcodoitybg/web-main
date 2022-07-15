@@ -21,6 +21,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.pull-right {
+    float: right !important;
+}
+
 .grid {
     width: 1200px;
     max-width: 100%;
@@ -90,7 +94,7 @@ html {
 }
 
 #main {
-
+    height: auto;
 }
 
 #slider {
@@ -267,11 +271,11 @@ html {
 
 
 #content {
+    
     display: flex;
+    margin-top: 146px;   
     width: 100%;  
-    top: 146px;
-    position: relative;
-    background-color: #dad8d8;
+    background-color: #dad8d8;   
 }
 
 .Home {
@@ -290,11 +294,13 @@ html {
 .News {
     display: block;
     width: 100%;
-    height: 600px;
-    margin-top: 30px;
+    height: 500px;
+    margin-top: 20px;
     font-size: 3rem;
     padding: 0 4px;
     background-color: #009688;
+    
+
 }
 
 
@@ -309,9 +315,9 @@ html {
 }
 
 .News__body {
-    height: 530px;
+    height: 430px;
     background-color: white;
-    overflow: auto;
+    overflow: auto;   
 }
 
 .News-list {
@@ -456,9 +462,36 @@ html {
 
 
 #footer {
-
+   
+    width: 100%;   
+    padding: 64px 16px;
+    text-align: center;   
 }
 
+.footer__socials-list {
+    font-size: 24px;
+}
+ 
+.footer__socials-list a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.footer__socials-list a, .footer__copy-right a:hover {
+    opacity: 0.7;
+    
+}
+
+.footer__copy-right {
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 900;
+    
+}
+
+.footer__copy-right a {
+    text-decoration: none;
+}
 
 .modal {
     
