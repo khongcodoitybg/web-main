@@ -201,3 +201,18 @@ function start() {
 }
 
 start()
+
+
+
+
+
+
+
+// document.querySelector('.News__body').addEventListener('scroll', () => {
+// 	const scrolled = document.getElementById('News__body').scrollTop
+// 	if(Math.floor(scrolled) === 1011) {
+		
+// 		setTimeout(function(){alert('ok')} ,1000)
+// 	}
+	
+// })

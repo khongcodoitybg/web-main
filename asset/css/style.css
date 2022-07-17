@@ -286,7 +286,7 @@ html {
 
 .main-content {
     
-    margin: 0 100px 0 20px;
+    margin-left: 10px;
     flex: 2;
     background-color: #fff;
 }
@@ -375,28 +375,48 @@ html {
 
 
 .additional-content {
-    display: inline;
-    height: 400px;
-    margin: 0 20px 0 30px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    height: 250px;
+    margin-top: 150px;
+    margin-left: 20px;
+    margin-right: 10px;
     flex: 1;
     background-color: red;
 
     
 }
 
-.additional-content .unread-post {
+/* .additional-content .unread-post {
     margin-top: 20px;  
-    height: 30px;
+    
     border: 1px solid #333;
 
-}
+} */
 
 .additional-content .statistic {
-    margin-top: 20px;
-    height: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    font-size: 2rem;
+    height: 200px;
+    font-weight: 600;
+    padding-left: 10px;
+    
     border: 1px solid #333;
 }
 
+
+.Article-count {
+    font-size: 1.4rem;
+    display: block;
+    margin-top: 30px;
+    font-weight: 400;
+
+}
 
 
 
