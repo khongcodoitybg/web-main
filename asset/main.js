@@ -176,7 +176,7 @@ signupButton.onclick = function dataSignup() {
 		"firstName": "hung",
 		"lastName": "hung",
 		"roles": [
-			"Admin"
+			"User"
 		]
 	}
 	sendDataSignup(formData, checkSignup)
