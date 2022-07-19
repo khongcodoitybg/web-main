@@ -74,6 +74,22 @@ function getArticle(callback) {
 	})
 }
 
+function addArticle(data) {
+	var options = {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	}
+	fetch(API + '/', options)													//sua
+	.then(response => response.json())
+	.then(getArticle(renderArticle))
+	.catch(error => {
+		console.error('There has been a problem with your fetch operation:', error);
+	})
+}
+
 function reset() {
 	document.getElementById('email-login').value = ''
 	document.getElementById('pass-login').value = ''
@@ -151,6 +167,17 @@ function renderArticle(Articles) {
 		`
 	})
 	htmls.innerHTML = htmls.join('')
+}
+
+document.querySelector('.submit-block__submit-btn').onclick =  function() {
+	const title = document.getElementById('Add-Article__body__title').value
+	const content = document.getElementById('Add-Article__body__content').value
+
+	var formData = {
+		"email": emailLogInput,												// sua
+		"password": passLogInput											// sua
+	}
+	addArticle(formData)
 }
 
 var logBtn = document.getElementById('signin-button')
