@@ -330,6 +330,7 @@ html {
 }
 
 .add-Article {
+    display: inline-flex;
     font-size: 1.8rem;
     align-items: center;
     cursor: pointer;
