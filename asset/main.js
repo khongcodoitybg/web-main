@@ -82,7 +82,7 @@ function addArticle(data) {
 		},
 		body: JSON.stringify(data)
 	}
-	fetch(API + '/', options)													//sua
+	fetch(API + '/api/Article', options)													
 	.then(response => response.json())
 	.then(getArticle(renderArticle))
 	.catch(error => {
@@ -152,12 +152,12 @@ function checkSignup(response) {
 }
 
 function renderArticle(Articles) {
-	var listArticleBlock = document.querySelector('.News-list')
-	var htmls = Articles.map(function(Article) {
+	const listArticleBlock = document.querySelector('.News-list')
+	const htmls = Articles.map(function(Article){
 		return `
 			<li class="Article-item-${Article.id}>
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article.id}, Article)">Tieu de</a>
+					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article.id}, ${Article})">${Article.title}</a>
 					<div class="item-news__block">
 						<div class="time-post">${Article.time}</div>
 						<div class="author">${Article.author}</div>
@@ -166,18 +166,23 @@ function renderArticle(Articles) {
 			</li>
 		`
 	})
-	htmls.innerHTML = htmls.join('')
+	listArticleBlock.innerHTML = htmls.join('')
 }
 
 document.querySelector('.submit-block__submit-btn').onclick =  function() {
 	const title = document.getElementById('Add-Article__body__title').value
-	const content = document.getElementById('Add-Article__body__content').value
+	const content = document.getElementById('post-content').value
 
 	var formData = {
-		"email": emailLogInput,												// sua
-		"password": passLogInput											// sua
-	}
+		"title": title,
+		"created": "2022-07-19T14:23:44.486Z",
+		"content": content,
+		"authorId": 1
+	};
+	
 	addArticle(formData)
+	showHome()
+	alert('Đăng bài thành công!')
 }
 
 var logBtn = document.getElementById('signin-button')
