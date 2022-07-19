@@ -158,9 +158,9 @@ function renderArticle(Articles) {
 		return `
 			<li class="Article-item-${Article.id}>
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article.id}, ${Article})">${Article.title}</a>
-					<div class="item-news__block">
-						<div class="time-post">${Article.time}</div>
+					<a href="#Article" class="item-news__heading" style="font-size: 1.8rem;" onclick="showArticle(${Article.id}, ${Article})">${Article.title}</a>
+					<div class="item-news__block" style="display: flex; justify-content: space-between; font-size: 1.2rem;">
+						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
 					</div>
 				</div>
@@ -172,13 +172,13 @@ function renderArticle(Articles) {
 
 document.querySelector('.submit-block__submit-btn').onclick =  function() {
 	const title = document.getElementById('Add-Article__body__title').value
-	const content = document.getElementById('post-content').value
+	const content = document.getElementById('post-content')
 
 	var formData = {
-		"title": title,
-		"created": "2022-07-19T14:23:44.486Z",
-		"content": content,
-		"authorId": 1
+		title: title,
+		created: "2022-07-19T14:23:44.486Z",
+		content: content,
+		authorId: 1
 	};
 	
 	addArticle(formData)
@@ -220,9 +220,9 @@ function showArticle(id, response) {
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
 	document.querySelector('.Article__heading__title').innerHTML = response.title
-	document.querySelector('.Article__heading__time-post').innerHTML = response.time
+	document.querySelector('.Article__heading__time-post').innerHTML = response.created
 	document.querySelector('.Article__body--main__word').innerHTML = response.content
-	document.querySelector('.member-name').innerHTML = response.authorName
+	document.querySelector('.member-name').innerHTML = response.author
 }
 
 function showHome() {
