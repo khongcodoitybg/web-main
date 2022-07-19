@@ -141,7 +141,7 @@ function renderArticle(Articles) {
 		return `
 			<li class="Article-item-${Article.id}>
 				<div class="item-news">
-					<a href="#" class="item-news__heading" onclick="showArticle(${Article.id}, Article)">Tieu de</a>
+					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article.id}, Article)">Tieu de</a>
 					<div class="item-news__block">
 						<div class="time-post">${Article.time}</div>
 						<div class="author">${Article.author}</div>
@@ -185,6 +185,7 @@ signupButton.onclick = function dataSignup() {
 function showArticle(id, response) {
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
+	document.getElementById('Add-Article').style.display = 'none'
 	document.querySelector('.Article__heading__title').innerHTML = response.title
 	document.querySelector('.Article__heading__time-post').innerHTML = response.time
 	document.querySelector('.Article__body--main__word').innerHTML = response.content
@@ -192,8 +193,15 @@ function showArticle(id, response) {
 }
 
 function showHome() {
-	document.getElementById('Home').style.display = 'block'
+	document.getElementById('Home').style.display = 'flex'
 	document.getElementById('Article').style.display = 'none'
+	document.getElementById('Add-Article').style.display = 'none'
+}
+
+function showAddArticle() {
+	document.getElementById('Home').style.display = 'none'
+	document.getElementById('Article').style.display = 'none'
+	document.getElementById('Add-Article').style.display = 'block'
 }
 
 function start() {
