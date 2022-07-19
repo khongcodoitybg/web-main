@@ -84,7 +84,7 @@ function addArticle(data) {
 	}
 	fetch(API + '/api/Article', options)													
 	.then(response => response.json())
-	.then(getArticle(renderArticle))
+	.then(function(){getArticle(renderArticle)})
 	.catch(error => {
 		console.error('There has been a problem with your fetch operation:', error);
 	})
@@ -156,13 +156,18 @@ function renderArticle(Articles) {
 	const a = Articles.developerMessage.results
 	const htmls = a.map(function(Article){
 		return `
-			<li class="Article-item-${Article.id}>
+			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading" style="font-size: 1.8rem;" onclick="showArticle(${Article.id}, ${Article})">${Article.title}</a>
+					<a href="#Article" class="item-news__heading Article-item-${Article.id}" style="font-size: 1.8rem;" onclick="getArticle(respond => {showArticle(${respond}, ${Article.id})})">${Article.title}</a>
 					<div class="item-news__block" style="display: flex; justify-content: space-between; font-size: 1.2rem;">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
 					</div>
+				</div>
+				<div style="content: '';
+					display: block;
+					height: 0.2px;
+					background-color: #ccc;">
 				</div>
 			</li>
 		`
@@ -171,8 +176,11 @@ function renderArticle(Articles) {
 }
 
 document.querySelector('.submit-block__submit-btn').onclick =  function() {
-	const title = document.getElementById('Add-Article__body__title').value
-	const content = document.getElementById('post-content')
+	var title = document.getElementById('Add-Article__body__title').value
+	
+	var content = document.getElementById('Add-Article__body__content').innerText
+console.log(title)
+console.log(content)
 
 	var formData = {
 		title: title,
@@ -215,14 +223,16 @@ signupButton.onclick = function dataSignup() {
 	sendDataSignup(formData, checkSignup)
 }
 
-function showArticle(id, response) {
+function showArticle(response, id) {
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
-	document.querySelector('.Article__heading__title').innerHTML = response.title
-	document.querySelector('.Article__heading__time-post').innerHTML = response.created
-	document.querySelector('.Article__body--main__word').innerHTML = response.content
-	document.querySelector('.member-name').innerHTML = response.author
+	const a = Articles.developerMessage.results
+	
+	document.querySelector('.Article__heading__title').innerHTML = a[i].title
+	document.querySelector('.Article__heading__time-post').innerHTML = a[i].created
+	document.querySelector('.Article__body--main__word').innerHTML = a[i].content
+	document.querySelector('.member-name').innerHTML = a[i].author
 }
 
 function showHome() {
