@@ -153,7 +153,8 @@ function checkSignup(response) {
 
 function renderArticle(Articles) {
 	const listArticleBlock = document.querySelector('.News-list')
-	const htmls = Articles.map(function(Article){
+	const a = Articles.developerMessage.results
+	const htmls = a.map(function(Article){
 		return `
 			<li class="Article-item-${Article.id}>
 				<div class="item-news">
