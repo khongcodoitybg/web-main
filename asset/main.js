@@ -158,17 +158,13 @@ function renderArticle(Articles) {
 		return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading Article-item-${Article.id}" style="font-size: 1.8rem;" onclick="getArticle(respond => {showArticle(${respond}, ${Article.id})})">${Article.title}</a>
+					<a href="#Article" class="item-news__heading Article-item-${Article.id}" style="font-size: 1.8rem;" onclick="showArticle(${Article})">${Article.title}</a>
 					<div class="item-news__block" style="display: flex; justify-content: space-between; font-size: 1.2rem;">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
 					</div>
 				</div>
-				<div style="content: '';
-					display: block;
-					height: 0.2px;
-					background-color: #ccc;">
-				</div>
+				<div style="display: block; height: 0.2px; background-color: #ccc;"></div>
 			</li>
 		`
 	})
@@ -223,17 +219,18 @@ signupButton.onclick = function dataSignup() {
 	sendDataSignup(formData, checkSignup)
 }
 
-function showArticle(response, id) {
+function showArticle(respond) {
+	document.querySelector('.Article__heading__title').innerHTML = respond[i].title
+	document.querySelector('.Article__heading__time-post').innerHTML = respond[i].created
+	document.querySelector('.Article__body--main__word').innerHTML = respond[i].content
+	document.querySelector('.member-name').innerHTML = respond[i].author
+
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
-	const a = Articles.developerMessage.results
-	
-	document.querySelector('.Article__heading__title').innerHTML = a[i].title
-	document.querySelector('.Article__heading__time-post').innerHTML = a[i].created
-	document.querySelector('.Article__body--main__word').innerHTML = a[i].content
-	document.querySelector('.member-name').innerHTML = a[i].author
 }
+
+
 
 function showHome() {
 	document.getElementById('Home').style.display = 'flex'
