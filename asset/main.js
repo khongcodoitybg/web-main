@@ -245,6 +245,7 @@ function showAddArticle() {
 
 function start() {
 	getArticle(renderArticle)
+	document.querySelector('.Article-count').innerHTML = "Số lượng bài viết: " + ArticleLists.length
 }
 
 start()
