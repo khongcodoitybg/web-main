@@ -74,7 +74,7 @@ function getArticle(callback) {
 	})
 }
 
-function addArticle(data) {
+function addArticle(data, callback) {
 	var options = {
 		method: 'POST',
 		headers: {
@@ -84,9 +84,7 @@ function addArticle(data) {
 	}
 	fetch(API + '/api/Article', options)													
 	.then(response => response.json())
-	.then(function() {getArticle(function(responses){
-		renderArticle(responses)
-	})})
+	.then(callback)
 	.catch(error => {
 		console.error('There has been a problem with your fetch operation:', error);
 	})
@@ -153,14 +151,17 @@ function checkSignup(response) {
 	}
 }
 
+ArticleLists = []
+index = 0
 function renderArticle(Articles) {
 	const listArticleBlock = document.querySelector('.News-list')
-	const a = Articles.developerMessage.results
-	const htmls = a.map(function(Article){
+	ArticleLists = Articles.developerMessage.results
+	ArticleLists.reverse()
+	const htmls = ArticlesList.map(function(Article){
 		return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading Article-item-${Article.id}" style="font-size: 1.8rem;" onclick="showArticle(${Article})">${Article.title}</a>
+					<a href="#Article" class="item-news__heading Article-item-${Article.id}" style="font-size: 1.8rem;" onclick="showArticle(${Article.id})">${Article.title}</a>
 					<div class="item-news__block" style="display: flex; justify-content: space-between; font-size: 1.2rem;">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
@@ -175,19 +176,16 @@ function renderArticle(Articles) {
 
 document.querySelector('.submit-block__submit-btn').onclick =  function() {
 	var title = document.getElementById('Add-Article__body__title').value
-	
 	var content = document.getElementById('Add-Article__body__content').innerText
-console.log(title)
-console.log(content)
-
 	var formData = {
 		title: title,
 		created: "2022-07-19T14:23:44.486Z",
 		content: content,
 		authorId: 1
-	};
-	
-	addArticle(formData)
+	};	
+	addArticle(formData, function() {
+		getArticle(renderArticle)
+	})
 	showHome()
 	alert('Đăng bài thành công!')
 }
@@ -221,12 +219,11 @@ signupButton.onclick = function dataSignup() {
 	sendDataSignup(formData, checkSignup)
 }
 
-function showArticle(respond) {
-	document.querySelector('.Article__heading__title').innerHTML = respond[i].title
-	document.querySelector('.Article__heading__time-post').innerHTML = respond[i].created
-	document.querySelector('.Article__body--main__word').innerHTML = respond[i].content
-	document.querySelector('.member-name').innerHTML = respond[i].author
-
+function showArticle(i) {
+	document.querySelector('.Article__heading__title').innerHTML = ArticleLists[i].title
+	document.querySelector('.Article__heading__time-post').innerHTML = ArticleLists[i].created
+	document.querySelector('.Article__body--main__word').innerHTML = ArticleLists[i].content
+	document.querySelector('.member-name').innerHTML = ArticleLists[i].author
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
@@ -266,3 +263,10 @@ start()
 // 	}
 	
 // })
+
+
+
+// a = [1, 2, 3]
+// a.reverse()
+// console.log(a)
+
