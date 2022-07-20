@@ -70,7 +70,7 @@ function getArticle(callback) {
 	.then(response => response.json())
 	.then(callback)
 	.catch(error => {
-		console.error('There has been a problem with your fetch operation:', error);
+		console.error('There has been a problem with your fetch operation:', error)
 	})
 }
 
@@ -228,8 +228,6 @@ function showArticle(i) {
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
 }
-
-
 
 function showHome() {
 	document.getElementById('Home').style.display = 'flex'
