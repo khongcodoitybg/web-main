@@ -84,7 +84,9 @@ function addArticle(data) {
 	}
 	fetch(API + '/api/Article', options)													
 	.then(response => response.json())
-	.then(function(){getArticle(renderArticle)})
+	.then(function() {getArticle(function(responses){
+		renderArticle(responses)
+	})})
 	.catch(error => {
 		console.error('There has been a problem with your fetch operation:', error);
 	})
