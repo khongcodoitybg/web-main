@@ -93,7 +93,7 @@ function getArticleById(id, callback) {
 		  error
 		);
 	  });
-  }
+}
 
 function addArticle(data, callback) {
   var options = {
@@ -137,7 +137,7 @@ function checkLog(response) {
   } else {
     hidenSignin();
     document.querySelector(".header__log-block").innerHTML =
-      '<button class="js-log-Btn info-Btn"></button><button class="js-log-Btn">Logout</button><div class="search-btn js-search"><input id="search" type="text" name="search" class="search-input" placeholder="Tìm kiếm"><div class="search-icon-block" onclick="clearSearch()"><i class="search-icon ti-search"></i></div></div>';
+      '<button class="js-log-Btn info-Btn"></button><button class="js-log-Btn logout-Btn" onclick="logOut()">Logout</button><div class="search-btn js-search"><input id="search" type="text" name="search" class="search-input" placeholder="Tìm kiếm"><div class="search-icon-block" onclick="clearSearch()"><i class="search-icon ti-search"></i></div></div>';
     document.querySelector(".info-Btn").innerText = userInput;
     reset();
   }
@@ -171,7 +171,11 @@ function checkSignup(response) {
     alert("Đăng ký thành công");
   }
 }
-//
+
+function logOut() {
+	document.querySelector(".header__log-block").innerHTML =
+    '<button class="js-log-Btn js-signin-Btn" onclick="showSignin()">Sign In</button><button class="js-log-Btn js-signup-Btn" onclick="showSignup()">Sign Up</button><div class="search-btn js-search"><input id="search" type="text" name="search" class="search-input" placeholder="Tìm kiếm"><div class="search-icon-block" onclick="clearSearch()"><i class="search-icon ti-search"></i></div></div>';
+}
 
 var ArticleLists = [];
 index = 0;
@@ -195,23 +199,6 @@ function renderArticle(Articles) {
   });
   listArticleBlock.innerHTML = htmls.join("");
 }
-
-document.querySelector(".submit-block__submit-btn").onclick = function () {
-  var title = document.getElementById("Add-Article__body__title").value;
-  var content = document.getElementById("Add-Article__body__content").innerText;
-  var date = new Date();
-  var formData = {
-    title: title,
-    created: "2022-07-19T14:23:44.486Z",
-    content: content,
-    authorId: 1, /// tác giả
-  };
-  addArticle(formData, function () {
-    getArticle(renderArticle);
-  });
-  showHome();
-  alert("Đăng bài thành công!");
-};
 
 var logBtn = document.getElementById("signin-button");
 logBtn.onclick = function dataLog() {
@@ -240,6 +227,23 @@ signupButton.onclick = function dataSignup() {
   sendDataSignup(formData, checkSignup);
 };
 
+document.querySelector(".submit-block__submit-btn").onclick = function () {
+	var title = document.getElementById("Add-Article__body__title").value;
+	var content = document.getElementById("Add-Article__body__content").innerText;
+	var date = new Date();
+	var formData = {
+	  title: title,
+	  created: "2022-07-19T14:23:44.486Z",
+	  content: content,
+	  authorId: 1, /// tác giả
+	};
+	addArticle(formData, function () {
+	  getArticle(renderArticle);
+	});
+	showHome();
+	alert("Đăng bài thành công!");
+};
+
 function showArticle(id) {
 	getArticleById(id,function(response) {
 		const Article = response.data.result
@@ -263,15 +267,9 @@ function showHome() {
 }
 
 function showAddArticle() {
-  document.querySelector(".Article__heading__title").innerHTML = response.title;
-  document.querySelector(".Article__heading__time-post").innerHTML =
-    response.created;
-  document.querySelector(".Article__body--main__word").innerHTML =
-    response.content;
-  document.querySelector(".member-name").innerHTML = response.author;
-  document.getElementById("Home").style.display = "none";
-  document.getElementById("Article").style.display = "block";
-  document.getElementById("Add-Article").style.display = "none";
+	document.getElementById("Home").style.display = "none";
+	document.getElementById("Article").style.display = "none";
+	document.getElementById("Add-Article").style.display = "block";	
 }
 
 function start() {
@@ -291,6 +289,4 @@ start();
 
 // })
 
-// a = [1, 2, 3]
-// a.reverse()
-// console.log(a)
+
