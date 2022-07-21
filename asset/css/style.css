@@ -293,7 +293,7 @@ html {
 .Home {
     width: 100%;
     display: flex;
-    /* display: none; */
+    display: none;
     justify-content: space-around;
 }
 
@@ -464,9 +464,9 @@ html {
     padding-top: 30px;
     width: 100%;
     min-height: 460px;
-    /* display: block;  */
-    display: none;  
-    background-color: red;
+    display: block; 
+    /* display: none;   */
+    background-color: #a4dbdf;
 }
 
 .Article__heading {
@@ -484,6 +484,30 @@ html {
     margin-top: 10px;
     display: block;
     font-size: 1.2rem;
+}
+
+.Article-change {
+    margin-top: 8px;
+    padding: 10px;
+    font-size: 1.6rem;
+    color: rgb(1, 20, 120);
+}
+
+.change {
+    cursor: pointer;
+}
+
+.remove {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.change:hover { 
+    opacity: 0.6;
+}
+
+.remove:hover {
+    opacity: 0.6;
 }
 
 .Article__body {

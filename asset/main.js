@@ -114,6 +114,31 @@ function addArticle(data, callback) {
     });
 }
 
+function changeArticle() {
+
+}
+
+function removeArticle(id) {
+  var options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    
+  };
+  fetch(API + "/api/Article/" + id, options)
+    .then((response) => response.json())
+    .then(function() {
+      getArticle(renderArticle)
+    })
+    .catch((error) => {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    });
+}
+
 function reset() {
   document.getElementById("email-login").value = "";
   document.getElementById("pass-login").value = "";
@@ -178,6 +203,7 @@ function logOut() {
 }
 
 var ArticleLists = [];
+var index = 0;
 function renderArticle(Articles) {
   const listArticleBlock = document.querySelector(".News-list");
   ArticleLists = Articles.developerMessage.results;
@@ -255,20 +281,22 @@ document.querySelector(".submit-block__submit-btn").onclick = function () {
 };
 
 function showArticle(id) {
-  getArticleById(id, function (response) {
-    const Article = response.data.result;
-    document.querySelector(".Article__heading__title").innerHTML =
-      Article.title;
-    document.querySelector(".Article__heading__time-post").innerHTML =
-      Article.created;
-    document.querySelector(".Article__body--main__word").innerHTML =
-      Article.content;
-    document.querySelector(".member-name").innerHTML = Article.author.name;
-  });
-
-  document.getElementById("Home").style.display = "none";
-  document.getElementById("Article").style.display = "block";
-  document.getElementById("Add-Article").style.display = "none";
+    getArticleById(id, function(response) {
+      const Article = response.data.result;
+      document.querySelector(".Article__heading__title").innerHTML = Article.title;
+      document.querySelector(".Article__heading__time-post").innerHTML = Article.created;
+      document.querySelector(".Article__body--main__word").innerHTML = Article.content;
+      document.querySelector(".member-name").innerHTML = Article.author.name;
+    });
+    document.getElementById("Home").style.display = "none";
+    document.getElementById("Article").style.display = "block";
+    document.getElementById("Add-Article").style.display = "none";
+    document.querySelector('.remove').onclick = function() {
+      if(confirm("Bạn có chắc muốn xóa bài viết?")) {
+        removeArticle(id);
+        showHome();
+      }     
+    }
 }
 
 function showHome() {
