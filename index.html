@@ -18,10 +18,10 @@
 
         <!-- Slogent -->
         <div id="slider" class="col-ful">
-            <a href="" class="logo">
+            <a href="" class="logo"> 
                 <img src="./asset/img/BKA.png" alt="">
             </a>
-            <p class="slider__slogent">Nothing Is Imposible</p>
+            <p class="slider__slogent">Nothing is imposible</p>
         </div>
         <!-- End Slogent -->
 
@@ -131,7 +131,6 @@
                     <label for="" class="Article__heading__title">tieu de</label>
                     <time class="Article__heading__time-post"></time>
                 </div>
-
                 <div class="Article__body col">
                     <div class="Article__body--main">                       
                         <div class="Article__body--main__author">
@@ -159,13 +158,14 @@
                         <p class="cancle-block__word">Hủy</p>
                     </a>
                 </div>
-
                 <div class="Add-Article__body">
                     <div class="Add-Article__body__title-block">
                         <input id="Add-Article__body__title" type="text" class="Add-Article__body__title" placeholder="Tiêu đề">
+                        <p class="err empty-title" style="display: none;">không được bỏ trống</p>
                     </div>
                     <div id="Add-Article__body__content" class="Add-Article__body__content" dir="ltr" contenteditable="true" style="min-height: 250px;" aria-disabled="false" spellcheck="true">                        
                     </div>
+                    <p class="err empty-content" style="display: none;">không được bỏ trống</p>
                     <div class="submit-block">
                         <a href="#index.html" class="btn submit-block__submit-btn unDecoration"><i class="fa-solid fa-pen"></i>Đăng bài</a>
                     </div>
@@ -201,6 +201,8 @@
         </div>
         <!-- End footer -->
     </div>
+    <!-- End main -->
+
 
     <!-- Begin Modal Sign up -->
     <div class="modal" onclick="hidenSignup()">

@@ -209,7 +209,7 @@ logBtn.onclick = function dataLog() {
     password: passLogInput,
   };
   sendDataLog(formData, checkLog);
-};
+}
 
 var signupButton = document.querySelector("#signup-button");
 signupButton.onclick = function dataSignup() {
@@ -225,7 +225,7 @@ signupButton.onclick = function dataSignup() {
     roles: ["User"],
   };
   sendDataSignup(formData, checkSignup);
-};
+}
 
 document.querySelector(".submit-block__submit-btn").onclick = function () {
 	var title = document.getElementById("Add-Article__body__title").value;
@@ -237,12 +237,31 @@ document.querySelector(".submit-block__submit-btn").onclick = function () {
 	  content: content,
 	  authorId: 1, /// tác giả
 	};
-	addArticle(formData, function () {
-	  getArticle(renderArticle);
-	});
-	showHome();
-	alert("Đăng bài thành công!");
-};
+	if(title === '') {
+		document.querySelector('.empty-title').style.display = 'block'
+		document.querySelector('.empty-content').style.display = 'none'
+	}
+	else if(content === '') {
+		document.querySelector('.empty-title').style.display = 'none'
+		document.querySelector('.empty-content').style.display = 'block'
+	}
+	else {
+		document.querySelector('.empty-title').style.display = 'none'
+		document.querySelector('.empty-content').style.display = 'none'
+		document.getElementById("Add-Article__body__title").value = ''
+		document.getElementById("Add-Article__body__content").innerText = ''
+		const status = addArticle(formData, function(response) {
+			getArticle(renderArticle)
+			return response.sratus														//sua
+		})
+		setTimeout(() => {
+			if(status === 200) {
+				showHome();
+				alert("Đăng bài thành công!");
+			}
+		}, 1000);		
+	}
+}
 
 function showArticle(id) {
 	getArticleById(id,function(response) {
