@@ -293,7 +293,7 @@ html {
 .Home {
     width: 100%;
     display: flex;
-    display: none;
+    /* display: none; */
     justify-content: space-around;
 }
 
@@ -464,8 +464,8 @@ html {
     padding-top: 30px;
     width: 100%;
     min-height: 460px;
-    display: block; 
-    /* display: none;   */
+    /* display: block;  */
+    display: none;  
     background-color: #a4dbdf;
 }
 

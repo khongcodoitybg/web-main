@@ -114,8 +114,25 @@ function addArticle(data, callback) {
     });
 }
 
-function changeArticle() {
-
+function changeArticle(id, data) {
+  var options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+  fetch(API + "/api/Article/" + id, options)
+    .then((response) => response.json())
+    .then(function() {
+      getArticle(renderArticle)
+    })
+    .catch((error) => {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    });
 }
 
 function removeArticle(id) {
@@ -251,7 +268,7 @@ signupButton.onclick = function dataSignup() {
   sendDataSignup(formData, checkSignup);
 };
 
-document.querySelector(".submit-block__submit-btn").onclick = function () {
+function submit() {
   var title = document.getElementById("Add-Article__body__title").value;
   var content = document.getElementById("Add-Article__body__content").innerText;
   var date = new Date();
@@ -291,6 +308,40 @@ function showArticle(id) {
     document.getElementById("Home").style.display = "none";
     document.getElementById("Article").style.display = "block";
     document.getElementById("Add-Article").style.display = "none";
+    document.querySelector('.change').onclick = function() {
+      showAddArticle();
+      document.querySelector('.Add-Article__heading').innerHTML =
+      '<label for="">Chỉnh sửa bài viết</label><a href="#index.html" class="cancle-block unDecoration"><i class="fa-solid fa-arrow-right-to-bracket"></i><p class="cancle-block__word">Hủy</p></a>'
+      document.querySelector('.cancle-block').onclick = showArticle(id)
+      document.querySelector('.submit-block').innerHTML = '<a href="#index.html" class="btn submit-block__submit-btn unDecoration">Lưu</a>'
+      document.querySelector('.submit-block__submit-btn').onclick = function() {
+        var title = document.getElementById("Add-Article__body__title").value;
+        var content = document.getElementById("Add-Article__body__content").innerText;
+        var date = new Date();
+        var formData = {
+          title: title,
+          created: date,
+          content: content,
+          authorId: 1,
+        };
+        if (title === "") {
+          document.getElementById("empty-title").style.display = "block";
+          document.getElementById("empty-content").style.display = "none";
+        } else if (content === "") {
+          document.getElementById("empty-title").style.display = "none";
+          document.getElementById("empty-content").style.display = "block";
+        } else {
+          document.getElementById("empty-title").style.display = "none";
+          document.getElementById("empty-content").style.display = "none";
+          document.getElementById("Add-Article__body__title").value = "";
+          document.getElementById("Add-Article__body__content").innerText = "";
+          changeArticle(id, formData)          
+          getArticle(renderArticle);
+          showHome();
+          alert("Sửa thành công!");
+          };     
+      }
+    }
     document.querySelector('.remove').onclick = function() {
       if(confirm("Bạn có chắc muốn xóa bài viết?")) {
         removeArticle(id);
