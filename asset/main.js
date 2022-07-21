@@ -157,7 +157,7 @@ function renderArticle(Articles) {
 	const listArticleBlock = document.querySelector('.News-list')
 	ArticleLists = Articles.developerMessage.results
 	ArticleLists.reverse()
-	const htmls = ArticlesList.map(function(Article){
+	const htmls = ArticleLists.map(function(Article){
 		return `
 			<li >
 				<div class="item-news">
