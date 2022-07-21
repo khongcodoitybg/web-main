@@ -83,6 +83,18 @@ function getArticle(callback) {
     });
 }
 
+function getArticleById(id, callback) {
+	fetch(API + "/api/Article/" + id)
+	  .then((response) => response.json())
+	  .then(callback)
+	  .catch((error) => {
+		console.error(
+		  "There has been a problem with your fetch operation:",
+		  error
+		);
+	  });
+  }
+
 function addArticle(data, callback) {
   var options = {
     method: "POST",
@@ -168,11 +180,11 @@ function renderArticle(Articles) {
   ArticleLists = Articles.developerMessage.results;
   ArticleLists.reverse();
   const htmls = ArticleLists.map(function (Article) {
-	const b = Article
+	
     return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading" onclick="showArticle(${b})">${Article.title}</a>
+					<a href="#" class="item-news__heading" onclick="showArticle(${Article.id})">${Article.title}</a>
 					<div class="item-news__block">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
@@ -228,14 +240,16 @@ signupButton.onclick = function dataSignup() {
   sendDataSignup(formData, checkSignup);
 };
 
-function showArticle(a) {
-    document.querySelector(".Article__heading__title").innerHTML =
-      a.title;
-    document.querySelector(".Article__heading__time-post").innerHTML =
-      a.created;
-    document.querySelector(".Article__body--main__word").innerHTML =
-      a.content;
-    document.querySelector(".member-name").innerHTML = a.author;
+function showArticle(id) {
+	getArticleById(id,function(response) {
+		const Article = response.data.result
+		document.querySelector(".Article__heading__title").innerHTML = Article.title;
+    	document.querySelector(".Article__heading__time-post").innerHTML = Article.created;
+    	document.querySelector(".Article__body--main__word").innerHTML = Article.content;
+	  	document.querySelector(".member-name").innerHTML = Article.author;
+
+	})
+    
 	document.getElementById("Home").style.display = "none";
 	document.getElementById("Article").style.display = "block";
 	document.getElementById("Add-Article").style.display = "none";
