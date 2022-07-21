@@ -162,6 +162,8 @@ function reset() {
   document.getElementById("email-signup").value = "";
   document.getElementById("pass-signup").value = "";
   document.getElementById("re-pass-signup").value = "";
+  document.getElementById("firstname-input").value = "";
+  document.getElementById("lastname-input").value = "";
 }
 
 function checkLog(response) {
@@ -186,31 +188,43 @@ function checkLog(response) {
 }
 
 function checkSignup(response) {
-  var emailSignupInput = document.getElementById("email-signup").value;
-  var passSignupInput = document.getElementById("pass-signup").value;
-  var repPassSignupInput = document.getElementById("re-pass-signup").value;
-  if (emailSignupInput.trim().length === 0) {
+  const firstName = document.getElementById("firstname-input").value;
+  const lastName = document.getElementById("lastname-input").value;
+  const emailSignupInput = document.getElementById("email-signup").value;
+  const passSignupInput = document.getElementById("pass-signup").value;
+  const repPassSignupInput = document.getElementById("re-pass-signup").value;
+  if (firstName.trim() === "" || lastName.trim() === "") {
+    document.querySelector('.empty-name').innerHTML = "Không được để trống"
+  }
+  else if (emailSignupInput.trim().length === 0) {
+    document.querySelector('.empty-name').innerHTML = "";
     document.querySelector(".email-signup-err").innerHTML = "Bắt buộc nhập";
+    document.querySelector(".pass-signup-err").innerHTML = "";
+    document.querySelector(".repass-signup-err").innerHTML = "";
   } else if (passSignupInput.trim().length === 0) {
+    document.querySelector('.empty-name').innerHTML = "";
     document.querySelector(".email-signup-err").innerHTML = "";
     document.querySelector(".pass-signup-err").innerHTML = "Bắt buộc nhập";
+    document.querySelector(".repass-signup-err").innerHTML = "";
   } else if (repPassSignupInput.trim().length === 0) {
+    document.querySelector('.empty-name').innerHTML = "";
     document.querySelector(".email-signup-err").innerHTML = "";
     document.querySelector(".pass-signup-err").innerHTML = "";
     document.querySelector(".repass-signup-err").innerHTML = "Bắt buộc nhập";
   } else if (passSignupInput.trim() != repPassSignupInput.trim()) {
     reset();
+    document.querySelector('.empty-name').innerHTML = "";
     document.querySelector(".email-signup-err").innerHTML = "";
     document.querySelector(".pass-signup-err").innerHTML = "";
     document.querySelector(".repass-signup-err").innerHTML =
       "Mật khẩu không trùng khớp";
   } else {
+    document.querySelector('.empty-name').innerHTML = "";
     document.querySelector(".email-signup-err").innerHTML = "";
     document.querySelector(".pass-signup-err").innerHTML = "";
     document.querySelector(".repass-signup-err").innerHTML = "";
     reset();
     hidenSignup();
-    alert("Đăng ký thành công");
   }
 }
 
@@ -254,18 +268,21 @@ logBtn.onclick = function dataLog() {
 
 var signupButton = document.querySelector("#signup-button");
 signupButton.onclick = function dataSignup() {
-  var emailSignupInput = document.getElementById("email-signup").value;
-  var passSignupInput = document.getElementById("pass-signup").value;
-  var repPassSignupInput = document.getElementById("re-pass-signup").value;
-  var formData = {
+  const firstName = document.getElementById("firstname-input").value;
+  const lastName = document.getElementById("lastname-input").value;
+  const emailSignupInput = document.getElementById("email-signup").value;
+  const passSignupInput = document.getElementById("pass-signup").value;
+  const repPassSignupInput = document.getElementById("re-pass-signup").value;
+  const formData = {
     email: emailSignupInput,
     password: passSignupInput,
     confirmPassword: repPassSignupInput,
-    firstName: "Null",
-    lastName: "Null",
+    firstName: firstName,
+    lastName: lastName,
     roles: ["User"],
   };
   sendDataSignup(formData, checkSignup);
+  alert("Đăng ký thành công");
 };
 
 function submit() {
@@ -312,7 +329,7 @@ function showArticle(id) {
       showAddArticle();
       document.querySelector('.Add-Article__heading').innerHTML =
       '<label for="">Chỉnh sửa bài viết</label><a href="#index.html" class="cancle-block unDecoration"><i class="fa-solid fa-arrow-right-to-bracket"></i><p class="cancle-block__word">Hủy</p></a>'
-      document.querySelector('.cancle-block').onclick = showArticle(id)
+      document.querySelector('.cancle-block').onclick = showAddArticle(id)
       document.querySelector('.submit-block').innerHTML = '<a href="#index.html" class="btn submit-block__submit-btn unDecoration">Lưu</a>'
       document.querySelector('.submit-block__submit-btn').onclick = function() {
         var title = document.getElementById("Add-Article__body__title").value;
@@ -350,6 +367,7 @@ function showArticle(id) {
     }
 }
 
+
 function showHome() {
   document.getElementById("Home").style.display = "flex";
   document.getElementById("Article").style.display = "none";
@@ -369,6 +387,31 @@ function start() {
 }
 
 start();
+
+
+
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
 // document.querySelector('.News__body').addEventListener('scroll', () => {
 // 	const scrolled = document.getElementById('News__body').scrollTop

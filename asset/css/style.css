@@ -190,7 +190,7 @@ html {
     top: 100%;
     left: 0;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
     
 }
 
@@ -299,7 +299,7 @@ html {
 
 .main-content {
     
-    margin-left: 10px;
+    margin-left: 4px;
     flex: 2;
     background-color: #fff;
 }
@@ -420,7 +420,7 @@ html {
     height: 250px;
     margin-top: 150px;
     margin-left: 20px;
-    margin-right: 10px;
+    margin-right: 4px;
     flex: 1;
     background-color: red;
 
@@ -442,7 +442,7 @@ html {
     font-size: 2rem;
     height: 200px;
     font-weight: 600;
-    padding-left: 10px;
+    padding-left: 4px;
     
     border: 1px solid #333;
 }
@@ -481,14 +481,14 @@ html {
 }
 
 .Article__heading__time-post {
-    margin-top: 10px;
+    margin-top: 4px;
     display: block;
     font-size: 1.2rem;
 }
 
 .Article-change {
     margin-top: 8px;
-    padding: 10px;
+    padding: 4px;
     font-size: 1.6rem;
     color: rgb(1, 20, 120);
 }
@@ -498,7 +498,7 @@ html {
 }
 
 .remove {
-    margin-left: 10px;
+    margin-left: 4px;
     cursor: pointer;
 }
 
@@ -513,7 +513,7 @@ html {
 .Article__body {
     width: 100%;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 
 .Article__body--main {
@@ -540,14 +540,14 @@ html {
 
 .Article__body--main__author .member-img {
     
-    margin-top: 10px;
+    margin-top: 4px;
     width: 75%;
     
 }
 
 .Article__body--main__author .member-name {
     font-size: 1.6rem;
-    margin-top: 10px;
+    margin-top: 4px;
 }
 
 .Article__body--comment {
@@ -571,7 +571,7 @@ html {
 .Add-Article__heading {
     display: flex;
     height: 70px;
-    padding: 30px 10px 10px 10px;    
+    padding: 30px 4px 4px 4px;    
     font-size: 2.6rem;
     font-weight: 600;
     justify-content: space-between;
@@ -590,14 +590,14 @@ html {
 .Add-Article__body {
     display: block;
     min-height: 400px;
-    margin: 10px;
+    margin: 4px;
     background-color: #009688;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
 
 .Add-Article__body__title-block {
-    margin: 10px;
+    margin: 4px;
 }
 
 .Add-Article__body__title {
@@ -611,8 +611,8 @@ html {
 }
 
 .Add-Article__body__content {
-    margin: 10px;
-    padding: 10px;
+    margin: 4px;
+    padding: 4px;
     font-size: 1.4rem;
     background-color: #f7fbfe;
     border: 1px solid blue;
@@ -762,30 +762,69 @@ html {
 }
 
 .modal-body {
-    padding: 0 12px;
+    margin-top: 30px;
+    padding: 0 24px;
+    font-size: 1.3rem;   
+}
+
+.modal-body .name {
+    display: flex;  
+    width: 100%;   
+    padding: 0;
+}
+
+.firstname-block {
+    display: flex;
+    flex-direction: row;  
+    padding-right: 12px;
+}
+
+.name label {
+    min-width: 80px;
+    line-height: 40px;
+}
+
+.name input {
+    width: 100%;
+    padding: 0 4px;
+    line-height: 20px;
+    border-radius: 0;
+    border: 1px solid #333;
+}
+
+.lastname-block {
+    display: flex;
+    flex-direction: row;   
+    padding-left: 12px;
+}
+
+.empty-name {
+    display: flex;
+    justify-content: center;
 }
 
 .modal-label {
     display: block;
-    font-size: 15px;
-    margin-top: 20px;
-    margin-bottom: 12px;
+    margin-top: 16px;
+    margin-bottom: 2px;
 }
 
 .modal-input {
     border: 1px solid #ccc;
     width: 100%;
+    line-height: 20px;
     padding: 10px;
-    font-size: 15px;
-    
+    font-size: 1.2rem;
+    border-radius: 0;
+    border: 1px solid #333;
 }
 
 
 .err {
     
-    margin-top: 0px;
+    margin-top: 4px;
     padding-left: 4px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #f44336;
 }
 

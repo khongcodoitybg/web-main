@@ -220,11 +220,23 @@
             </header>
 
             <div class="modal-body">
-                <label for="email-signup" class="modal-label">
+                <div class="name col">
+                    <div class="firstname-block col-two">
+                        <label for="firstname-input" class="firstname">First name</label>
+                        <input id="firstname-input" type="text" class="firstname-input">
+                    </div>
+                    <div class="lastname-block col-two">
+                        <label for="lastname-input" class="lastname">Last name</label>
+                        <input id="lastname-input" type="text" class="lastname-input">
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <p class="err empty-name"></p>
+                <label for="#email-signup" class="modal-label">
                     <i class="fa-solid fa-user"></i>
                     Email
                 </label>
-                <input id="email-signup" type="text" class="modal-input" placeholder="Email">
+                <input id="email-signup" type="email" class="modal-input" placeholder="Email">
                 <p class="email-signup-err err"></p>
 
                 <label for="pass-signup" class="modal-label">
