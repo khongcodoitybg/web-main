@@ -159,6 +159,7 @@ function checkSignup(response) {
     alert("Đăng ký thành công");
   }
 }
+//
 
 var ArticleLists = [];
 index = 0;
