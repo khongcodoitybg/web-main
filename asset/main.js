@@ -84,15 +84,15 @@ function getArticle(callback) {
 }
 
 function getArticleById(id, callback) {
-	fetch(API + "/api/Article/" + id)
-	  .then((response) => response.json())
-	  .then(callback)
-	  .catch((error) => {
-		console.error(
-		  "There has been a problem with your fetch operation:",
-		  error
-		);
-	  });
+  fetch(API + "/api/Article/" + id)
+    .then((response) => response.json())
+    .then(callback)
+    .catch((error) => {
+      console.error(
+        "There has been a problem with your fetch operation:",
+        error
+      );
+    });
 }
 
 function addArticle(data, callback) {
@@ -173,18 +173,16 @@ function checkSignup(response) {
 }
 
 function logOut() {
-	document.querySelector(".header__log-block").innerHTML =
+  document.querySelector(".header__log-block").innerHTML =
     '<button class="js-log-Btn js-signin-Btn" onclick="showSignin()">Sign In</button><button class="js-log-Btn js-signup-Btn" onclick="showSignup()">Sign Up</button><div class="search-btn js-search"><input id="search" type="text" name="search" class="search-input" placeholder="Tìm kiếm"><div class="search-icon-block" onclick="clearSearch()"><i class="search-icon ti-search"></i></div></div>';
 }
 
 var ArticleLists = [];
-index = 0;
 function renderArticle(Articles) {
   const listArticleBlock = document.querySelector(".News-list");
   ArticleLists = Articles.developerMessage.results;
   ArticleLists.reverse();
   const htmls = ArticleLists.map(function (Article) {
-	
     return `
 			<li >
 				<div class="item-news">
@@ -209,7 +207,7 @@ logBtn.onclick = function dataLog() {
     password: passLogInput,
   };
   sendDataLog(formData, checkLog);
-}
+};
 
 var signupButton = document.querySelector("#signup-button");
 signupButton.onclick = function dataSignup() {
@@ -220,63 +218,57 @@ signupButton.onclick = function dataSignup() {
     email: emailSignupInput,
     password: passSignupInput,
     confirmPassword: repPassSignupInput,
-    firstName: "hung",
-    lastName: "hung",
+    firstName: "Null",
+    lastName: "Null",
     roles: ["User"],
   };
   sendDataSignup(formData, checkSignup);
-}
+};
 
 document.querySelector(".submit-block__submit-btn").onclick = function () {
-	var title = document.getElementById("Add-Article__body__title").value;
-	var content = document.getElementById("Add-Article__body__content").innerText;
-	var date = new Date();
-	var formData = {
-	  title: title,
-	  created: "2022-07-19T14:23:44.486Z",
-	  content: content,
-	  authorId: 1, /// tác giả
-	};
-	if(title === '') {
-		document.getElementById('empty-title').style.display = 'block'
-		document.getElementById('empty-content').style.display = 'none'
-	}
-	else if(content === '') {
-		document.getElementById('empty-title').style.display = 'none'
-		document.getElementById('empty-content').style.display = 'block'
-	}
-	else {
-		document.getElementById('empty-title').style.display = 'none'
-		document.getElementById('empty-content').style.display = 'none'
-		document.getElementById("Add-Article__body__title").value = ''
-		document.getElementById("Add-Article__body__content").innerText = ''
-		const status = addArticle(formData, function(response) {
-			getArticle(renderArticle)
-			return response.sratus														//sua
-		})
-		setTimeout(() => {
-			if(status === 200) {
-				showHome();
-				alert("Đăng bài thành công!");
-			}
-		}, 1000);		
-	}
-}
+  var title = document.getElementById("Add-Article__body__title").value;
+  var content = document.getElementById("Add-Article__body__content").innerText;
+  var date = new Date();
+  var formData = {
+    title: title,
+    created: date,
+    content: content,
+    authorId: 1,
+  };
+  if (title === "") {
+    document.getElementById("empty-title").style.display = "block";
+    document.getElementById("empty-content").style.display = "none";
+  } else if (content === "") {
+    document.getElementById("empty-title").style.display = "none";
+    document.getElementById("empty-content").style.display = "block";
+  } else {
+    document.getElementById("empty-title").style.display = "none";
+    document.getElementById("empty-content").style.display = "none";
+    document.getElementById("Add-Article__body__title").value = "";
+    document.getElementById("Add-Article__body__content").innerText = "";
+    addArticle(formData, function () {
+      getArticle(renderArticle);
+      showHome();
+      alert("Đăng bài thành công!");
+    });
+  }
+};
 
 function showArticle(id) {
-	getArticleById(id,function(response) {
-		const Article = response.data.result
-		document.querySelector(".Article__heading__title").innerHTML = Article.title;
-    	document.querySelector(".Article__heading__time-post").innerHTML = Article.created;
-    	document.querySelector(".Article__body--main__word").innerHTML = Article.content;
-	  	document.querySelector(".member-name").innerHTML = Article.author.name;
+  getArticleById(id, function (response) {
+    const Article = response.data.result;
+    document.querySelector(".Article__heading__title").innerHTML =
+      Article.title;
+    document.querySelector(".Article__heading__time-post").innerHTML =
+      Article.created;
+    document.querySelector(".Article__body--main__word").innerHTML =
+      Article.content;
+    document.querySelector(".member-name").innerHTML = Article.author.name;
+  });
 
-	})
-    
-	document.getElementById("Home").style.display = "none";
-	document.getElementById("Article").style.display = "block";
-	document.getElementById("Add-Article").style.display = "none";
-	
+  document.getElementById("Home").style.display = "none";
+  document.getElementById("Article").style.display = "block";
+  document.getElementById("Add-Article").style.display = "none";
 }
 
 function showHome() {
@@ -286,9 +278,9 @@ function showHome() {
 }
 
 function showAddArticle() {
-	document.getElementById("Home").style.display = "none";
-	document.getElementById("Article").style.display = "none";
-	document.getElementById("Add-Article").style.display = "block";	
+  document.getElementById("Home").style.display = "none";
+  document.getElementById("Article").style.display = "none";
+  document.getElementById("Add-Article").style.display = "block";
 }
 
 function start() {
@@ -307,5 +299,4 @@ start();
 // 	}
 
 // })
-
 
