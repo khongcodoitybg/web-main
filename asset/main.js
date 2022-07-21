@@ -168,10 +168,11 @@ function renderArticle(Articles) {
   ArticleLists = Articles.developerMessage.results;
   ArticleLists.reverse();
   const htmls = ArticleLists.map(function (Article) {
+	const b = Article
     return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article})">${Article.title}</a>
+					<a href="#Article" class="item-news__heading" onclick="showArticle(${b})">${Article.title}</a>
 					<div class="item-news__block">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
