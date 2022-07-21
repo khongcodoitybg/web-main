@@ -246,7 +246,7 @@ function showArticle(id) {
 		document.querySelector(".Article__heading__title").innerHTML = Article.title;
     	document.querySelector(".Article__heading__time-post").innerHTML = Article.created;
     	document.querySelector(".Article__body--main__word").innerHTML = Article.content;
-	  	document.querySelector(".member-name").innerHTML = Article.author;
+	  	document.querySelector(".member-name").innerHTML = Article.author.name;
 
 	})
     
