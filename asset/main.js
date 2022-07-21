@@ -238,16 +238,16 @@ document.querySelector(".submit-block__submit-btn").onclick = function () {
 	  authorId: 1, /// tác giả
 	};
 	if(title === '') {
-		document.querySelector('.empty-title').style.display = 'block'
-		document.querySelector('.empty-content').style.display = 'none'
+		document.getElementById('empty-title').style.display = 'block'
+		document.getElementById('empty-content').style.display = 'none'
 	}
 	else if(content === '') {
-		document.querySelector('.empty-title').style.display = 'none'
-		document.querySelector('.empty-content').style.display = 'block'
+		document.getElementById('empty-title').style.display = 'none'
+		document.getElementById('empty-content').style.display = 'block'
 	}
 	else {
-		document.querySelector('.empty-title').style.display = 'none'
-		document.querySelector('.empty-content').style.display = 'none'
+		document.getElementById('empty-title').style.display = 'none'
+		document.getElementById('empty-content').style.display = 'none'
 		document.getElementById("Add-Article__body__title").value = ''
 		document.getElementById("Add-Article__body__content").innerText = ''
 		const status = addArticle(formData, function(response) {
