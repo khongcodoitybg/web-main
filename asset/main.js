@@ -161,7 +161,7 @@ function renderArticle(Articles) {
 		return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading onclick="showArticle()">${Article.title}</a>
+					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article.id})">${Article.title}</a>
 					<div class="item-news__block">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
@@ -176,6 +176,7 @@ function renderArticle(Articles) {
 document.querySelector('.submit-block__submit-btn').onclick =  function() {
 	var title = document.getElementById('Add-Article__body__title').value
 	var content = document.getElementById('Add-Article__body__content').innerText
+	var date = new Date()
 	var formData = {
 		title: title,
 		created: "2022-07-19T14:23:44.486Z",
@@ -218,11 +219,11 @@ signupButton.onclick = function dataSignup() {
 	sendDataSignup(formData, checkSignup)
 }
 
-function showArticle() {
-	// document.querySelector('.Article__heading__title').innerHTML = ArticleLists[i].title
-	// document.querySelector('.Article__heading__time-post').innerHTML = ArticleLists[i].created
-	// document.querySelector('.Article__body--main__word').innerHTML = ArticleLists[i].content
-	// document.querySelector('.member-name').innerHTML = ArticleLists[i].author
+function showArticle(i) {
+	document.querySelector('.Article__heading__title').innerHTML = ArticleLists[i].title
+	document.querySelector('.Article__heading__time-post').innerHTML = ArticleLists[i].created
+	document.querySelector('.Article__body--main__word').innerHTML = ArticleLists[i].content
+	document.querySelector('.member-name').innerHTML = ArticleLists[i].author
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
