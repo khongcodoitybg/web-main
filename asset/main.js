@@ -161,7 +161,7 @@ function renderArticle(Articles) {
 		return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article.id})">${Article.title}</a>
+					<a href="#Article" class="item-news__heading" onclick="showArticle(${Article})">${Article.title}</a>
 					<div class="item-news__block">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
@@ -219,11 +219,11 @@ signupButton.onclick = function dataSignup() {
 	sendDataSignup(formData, checkSignup)
 }
 
-function showArticle(i) {
-	document.querySelector('.Article__heading__title').innerHTML = ArticleLists[i].title
-	document.querySelector('.Article__heading__time-post').innerHTML = ArticleLists[i].created
-	document.querySelector('.Article__body--main__word').innerHTML = ArticleLists[i].content
-	document.querySelector('.member-name').innerHTML = ArticleLists[i].author
+function showArticle(response) {
+	document.querySelector('.Article__heading__title').innerHTML = response.title
+	document.querySelector('.Article__heading__time-post').innerHTML = response.created
+	document.querySelector('.Article__body--main__word').innerHTML = response.content
+	document.querySelector('.member-name').innerHTML = response.author
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
