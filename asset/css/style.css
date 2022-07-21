@@ -595,6 +595,14 @@ html {
     border-radius: 3px;
 }
 
+.empty-title {
+    display: none;
+}
+
+.empty-content {
+    display: none;
+}
+
 
 .submit-block {
     margin-top: 20px;
@@ -750,6 +758,7 @@ html {
 
 
 .err {
+    
     margin-top: 0px;
     padding-left: 4px;
     font-size: 1.2rem;
