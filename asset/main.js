@@ -161,13 +161,12 @@ function renderArticle(Articles) {
 		return `
 			<li >
 				<div class="item-news">
-					<a href="#Article" class="item-news__heading Article-item-${Article.id}" style="font-size: 1.8rem;" onclick="showArticle(${Article.id})">${Article.title}</a>
-					<div class="item-news__block" style="display: flex; justify-content: space-between; font-size: 1.2rem;">
+					<a href="#Article" class="item-news__heading onclick="showArticle()">${Article.title}</a>
+					<div class="item-news__block">
 						<div class="time-post">${Article.created}</div>
 						<div class="author">${Article.author}</div>
 					</div>
-				</div>
-				<div style="display: block; height: 0.2px; background-color: #ccc;"></div>
+				</div>		
 			</li>
 		`
 	})
@@ -219,11 +218,11 @@ signupButton.onclick = function dataSignup() {
 	sendDataSignup(formData, checkSignup)
 }
 
-function showArticle(i) {
-	document.querySelector('.Article__heading__title').innerHTML = ArticleLists[i].title
-	document.querySelector('.Article__heading__time-post').innerHTML = ArticleLists[i].created
-	document.querySelector('.Article__body--main__word').innerHTML = ArticleLists[i].content
-	document.querySelector('.member-name').innerHTML = ArticleLists[i].author
+function showArticle() {
+	// document.querySelector('.Article__heading__title').innerHTML = ArticleLists[i].title
+	// document.querySelector('.Article__heading__time-post').innerHTML = ArticleLists[i].created
+	// document.querySelector('.Article__body--main__word').innerHTML = ArticleLists[i].content
+	// document.querySelector('.member-name').innerHTML = ArticleLists[i].author
 	document.getElementById('Home').style.display = 'none'
 	document.getElementById('Article').style.display = 'block'
 	document.getElementById('Add-Article').style.display = 'none'
