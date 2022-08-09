@@ -226,6 +226,7 @@ function checkSignup(response) {
     reset();
     hidenSignup();
   }
+  alert("Đăng ký thành công");
 }
 
 function logOut() {
@@ -282,7 +283,7 @@ signupButton.onclick = function dataSignup() {
     roles: ["User"],
   };
   sendDataSignup(formData, checkSignup);
-  alert("Đăng ký thành công");
+  
 };
 
 function submit() {
